@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 // PASS LOGIN CREDENTIAL || POST
-router.get("/createUser",AddUserController)
+router.post("/createUser",AddUserController)
 
 
 
