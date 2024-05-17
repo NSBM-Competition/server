@@ -29,7 +29,7 @@ const sendEmail = async (email, resetCode) => {
   } 
 
   catch (error) {
-    console.error('Error sending email:', error.message);
+    console.error('Error send email:', error.message);
     throw new Error('Failed to send email');
   }
 };
