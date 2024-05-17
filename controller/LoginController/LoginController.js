@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 const RegistrationModel = require('../../model/RegistrationModel/RegistrationModel');
 
 // Handle the user login
 const loginController = async (req, res) => {
       console.log(req.body);
         try {
-          const user = await RegistrationModel.findOne({ email: req.body.email });
+          const user = await RegistrationModel.findOne({ DTCNumber: req.body.DTPCode });
           if (!user) {
                   return res.status(200).send({
                           message: "user not found",
@@ -14,15 +15,25 @@ const loginController = async (req, res) => {
           }
       
           // compare the password and hashedpassword
-          const isMatch = await bcrypt.compare(req.body.password, user.password);
+        //   const isMatch = await bcrypt.compare(req.body.password, user.password);
+        const isMatch = await bcrypt.compare(req.body.Password, user.password);
+        // console.log(isMatch);
       
           // check the passwords are match or not
           if (!isMatch) {
                   return res.status(200).send({
-                          message: "Invlid Email or Password",
+                          message: "Invalid Email or Password",
                           success: false
                   });
           }
+
+          if(req.body.DTPCode !== user.DTCNumber){
+                return res.status(200).send({
+                        message: "Invalid DCP Number",
+                        success: false
+                });
+          }
+
       
           // Generate a JWT token after user creation
           const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
