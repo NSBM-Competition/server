@@ -14,6 +14,11 @@ const registrationSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
 
   username: {
     type: String,
@@ -44,6 +49,11 @@ const registrationSchema = new mongoose.Schema({
   agreeTerms: {
     type: Boolean,
     required: true
+  },
+
+  DTCNumber: {
+    type: String,
+    required: false
   },
   
 });
