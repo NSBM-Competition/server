@@ -4,9 +4,7 @@ const GenerateQRController = async (req, res) => {
         try {
                 console.log(req.body);
 
-                // console.log(await QRCode.toDataURL(req.body.data))
-
-                QRCode.toDataURL(req.body.data)
+                QRCode.toDataURL("http://localhost:5174/sample")
                         .then(url => {
                              console.log(url)
                              res.send({

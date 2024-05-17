@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 
 // Handle the user Registration
 const registerController = async (req, res) => {
+  console.log(req.body);
 
   try {
 //     
