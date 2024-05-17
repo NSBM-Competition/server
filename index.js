@@ -9,6 +9,7 @@ const GenerateQRRoute = require("./router/GenerateQRRoute/GenerateQRRoute")
 const LoginRoute = require("./router/LoginRoute/LoginRoute")
 const RegisterRoute = require("./router/RegisterRoute/RegisterRoute")
 const RegisterUserDetailsRoute = require("./router/GetAllRegisteredUserDetailsRoute/GetAllRegisteredUserDetailsRoute")
+const AddUserRoute = require("./router/AddUserRoute/AddUserRoute")
 
 require("./db/db")
 
@@ -24,6 +25,7 @@ app.use("/api/v1/user",LoginRoute)
 app.use("/api/v1/user",RegisterRoute)
 app.use("/api/v1/generate",GenerateQRRoute)
 app.use("/api/v1/user",RegisterUserDetailsRoute)
+app.use("/api/v1/admin",AddUserRoute)
 
 
 // const server = http.createServer(app);
