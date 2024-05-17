@@ -5,6 +5,8 @@ const cors = require('cors');
 const http = require("http");
 const { Server } = require("socket.io");
 
+const GenerateQRRoute = require("./router/GenerateQRRoute/GenerateQRRoute")
+
 
 require("./db/db")
 
@@ -14,6 +16,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors())
+
+
+app.use("/api/v1/generate",GenerateQRRoute)
 
 
 // const server = http.createServer(app);
