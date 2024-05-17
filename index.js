@@ -6,6 +6,8 @@ const http = require("http");
 const { Server } = require("socket.io");
 
 const GenerateQRRoute = require("./router/GenerateQRRoute/GenerateQRRoute")
+const LoginRoute = require("./router/LoginRoute/LoginRoute")
+const RegisterRoute = require("./router/RegisterRoute/RegisterRoute")
 
 
 require("./db/db")
@@ -18,6 +20,8 @@ app.use(bodyParser.json());
 app.use(cors())
 
 
+app.use("/api/v1/user",LoginRoute)
+app.use("/api/v1/user",RegisterRoute)
 app.use("/api/v1/generate",GenerateQRRoute)
 
 

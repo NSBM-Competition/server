@@ -3,7 +3,7 @@ const RegistrationModel = require('../../model/RegistrationModel/RegistrationMod
 
 // Handle the user login
 const loginController = async (req, res) => {
-      
+      console.log(req.body);
         try {
           const user = await RegistrationModel.findOne({ email: req.body.email });
           if (!user) {
@@ -44,3 +44,6 @@ const loginController = async (req, res) => {
       }
            
       };
+
+
+module.exports = {loginController}
